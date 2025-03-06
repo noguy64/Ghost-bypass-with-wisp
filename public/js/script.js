@@ -49,6 +49,26 @@ buttons.forEach((button) => {
     });
 });
 
+ function openIframe() {
+        // Show the iframe container
+        document.getElementById("iframe-container").style.display = "flex";
+    }
+
+    function goBackToHome() {
+        // Hide the iframe container
+        document.getElementById("iframe-container").style.display = "none";
+
+        // Clear the iframe by resetting its content (removes any loaded page)
+        document.getElementById("iframeWindow").src = "";
+    }
+
+    // Attach event listener to the Search button
+    document.getElementById("searchButton").addEventListener("click", function() {
+        openIframe();
+    });
+
+
+
 const connection = new BareMux.BareMuxConnection("/baremux/worker.js")
 const wispUrl = (location.protocol === "https:" ? "wss" : "ws") + "://" + location.host + "/wisp/";
 const bareUrl = (location.protocol === "https:" ? "https" : "http") + "://" + location.host + "/bare/"

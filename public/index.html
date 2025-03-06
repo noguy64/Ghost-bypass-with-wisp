@@ -75,35 +75,6 @@
     
     <header style="height: 150px;">
     <h1>GHOST BYPASS</h1>
-    <script>
-        function openIframe() {
-            // Show the iframe container
-            document.getElementById("iframe-container").style.display = "flex";
-    
-            // Create an empty iframe dynamically
-            const iframe = document.createElement("iframe");
-            iframe.className = "iframeWindow"; // Apply styles
-            iframe.allow = "fullscreen"; // Allow fullscreen mode
-            iframe.src = ""; // No URL is set
-    
-            // Append iframe to the wrapper
-            document.getElementById("iframe-wrapper").appendChild(iframe);
-        }
-    
-        function goBackToHome() {
-            // Hide the iframe container
-            document.getElementById("iframe-container").style.display = "none";
-    
-            // Remove the iframe from the DOM
-            document.getElementById("iframe-wrapper").innerHTML = "";
-        }
-    
-        // Attach event listener to the Search button
-        document.getElementById("searchButton").addEventListener("click", function() {
-            openIframe();
-        });
-    </script>
-    
     <nav>
             <ul>
                 <li><a onclick="showScreen('home-screen')">Home</a></li>
@@ -118,10 +89,12 @@
     <input type="text" id="urlInput" placeholder="Enter URL here" class="form__input">
     <button id="searchButton">Search Text</button>
     
-    <div id="iframe-container" class="iframe-container" style="display: none;">
-        <div class="back-button" onclick="goBackToHome()">Back to Home</div>
-        <div id="iframe-wrapper"></div> <!-- This will hold the iframe -->
-    </div>
+    <!-- Fullscreen iframe container (Hidden by default) -->
+<div id="iframe-container" class="iframe-container" style="display: none;">
+    <div class="back-button" onclick="goBackToHome()">Back to Home</div>
+    <iframe id="iframeWindow" class="iframeWindow"></iframe>
+</div>
+
     
 </center>
     <div id="particles-js"></div>
