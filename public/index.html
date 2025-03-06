@@ -27,6 +27,7 @@
 </body>
 </html>
 
+
 <section id="apps-screen" class="screen">
     <header style="height: 150px;">
         <h1 style="">APPS</h1>
@@ -58,10 +59,52 @@
             </a>
         </div>
 </section>
+
+
+
+
 <section id="home-screen" class="screen active">
+    <div style="display: flex; align-items: center; gap: 5px;">
+        <label for="switcher">Transport:</label>
+        <select id="switcher" style="width: auto; font-size: 14px; padding: 2px;">
+            <option value="">--Please Choose an Option--</option>
+            <option value="epoxy" selected>Epoxy</option>
+            <option value="bare">Bare</option>
+        </select>
+    </div>
+    
     <header style="height: 150px;">
-        <h1>GHOST BYPASS</h1>
-        <nav>
+    <h1>GHOST BYPASS</h1>
+    <script>
+        function openIframe() {
+            // Show the iframe container
+            document.getElementById("iframe-container").style.display = "flex";
+    
+            // Create an empty iframe dynamically
+            const iframe = document.createElement("iframe");
+            iframe.className = "iframeWindow"; // Apply styles
+            iframe.allow = "fullscreen"; // Allow fullscreen mode
+            iframe.src = ""; // No URL is set
+    
+            // Append iframe to the wrapper
+            document.getElementById("iframe-wrapper").appendChild(iframe);
+        }
+    
+        function goBackToHome() {
+            // Hide the iframe container
+            document.getElementById("iframe-container").style.display = "none";
+    
+            // Remove the iframe from the DOM
+            document.getElementById("iframe-wrapper").innerHTML = "";
+        }
+    
+        // Attach event listener to the Search button
+        document.getElementById("searchButton").addEventListener("click", function() {
+            openIframe();
+        });
+    </script>
+    
+    <nav>
             <ul>
                 <li><a onclick="showScreen('home-screen')">Home</a></li>
                 <li><a onclick="showScreen('apps-screen')">Apps</a></li>
@@ -74,7 +117,12 @@
     </main>
     <input type="text" id="urlInput" placeholder="Enter URL here" class="form__input">
     <button id="searchButton">Search Text</button>
-    <iframe id="iframeWindow" class="iframeWindow"></iframe>
-    </center>
+    
+    <div id="iframe-container" class="iframe-container" style="display: none;">
+        <div class="back-button" onclick="goBackToHome()">Back to Home</div>
+        <div id="iframe-wrapper"></div> <!-- This will hold the iframe -->
+    </div>
+    
+</center>
     <div id="particles-js"></div>
 </section>
