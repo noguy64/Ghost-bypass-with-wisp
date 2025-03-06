@@ -50,6 +50,42 @@ buttons.forEach((button) => {
 });
 
 
+document.addEventListener("DOMContentLoaded", function() {
+    const urlInput = document.getElementById("urlInput");
+    const searchButton = document.getElementById("searchButton");
+    const appLinks = document.querySelectorAll(".game-button a"); // Select all app links
+
+    if (urlInput) {
+        // Handle Enter key for manual input
+        urlInput.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                openIframe();
+            }
+        });
+    } else {
+        console.error("Error: urlInput not found.");
+    }
+
+    if (appLinks.length > 0) {
+        // Add click event to each app link
+        appLinks.forEach(app => {
+            app.addEventListener("click", function(event) {
+                event.preventDefault(); // Prevent normal navigation
+                urlInput.value = this.href; // Set href as input value
+
+                // Simulate pressing "Enter"
+                let enterEvent = new KeyboardEvent("keypress", { key: "Enter" });
+                urlInput.dispatchEvent(enterEvent);
+            });
+        });
+    } else {
+        console.error("Error: No app links found.");
+    }
+});
+
+
+
 
 document.getElementById("urlInput").addEventListener("keypress", function(event) {
     if (event.key === "Enter") {  // Ensure the key is "Enter"
