@@ -77,6 +77,14 @@ function reloadIframe() {
 
 document.getElementById("searchButton").addEventListener("click", function() {
     openIframe();
+    
+    document.getElementById("urlInput").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Prevent default form submission
+            openIframe(); // Open the iframe just like clicking the search button
+        }
+
+
 });
 
 
