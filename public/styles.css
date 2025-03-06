@@ -295,4 +295,8 @@ input.form__input:focus {
     border: none;
 }
 
+#searchButton {
+    display: none; /
+}
+
 

@@ -84,12 +84,12 @@ function reloadIframe() {
     document.getElementById("iframeWindow").contentWindow.location.reload();
 }
 
-
-
+document.getElementById("searchButton").addEventListener("click", function() {
+    openIframe();
     
 
 
- 
+});
 
 
 
