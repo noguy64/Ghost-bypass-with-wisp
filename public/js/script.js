@@ -49,23 +49,37 @@ buttons.forEach((button) => {
     });
 });
 
- function openIframe() {
-        // Show the iframe container
-        document.getElementById("iframe-container").style.display = "flex";
+
+function openIframe() {
+    document.getElementById("iframe-container").style.display = "flex";
+}
+
+function goBackToHome() {
+    document.getElementById("iframe-container").style.display = "none";
+    document.getElementById("iframeWindow").src = ""; // Clear iframe
+}
+
+function goBack() {
+    const iframe = document.getElementById("iframeWindow").contentWindow;
+    if (iframe.history.length > 1) {
+        iframe.history.back();
     }
+}
 
-    function goBackToHome() {
-        // Hide the iframe container
-        document.getElementById("iframe-container").style.display = "none";
+function goForward() {
+    const iframe = document.getElementById("iframeWindow").contentWindow;
+    iframe.history.forward();
+}
 
-        // Clear the iframe by resetting its content (removes any loaded page)
-        document.getElementById("iframeWindow").src = "";
-    }
+function reloadIframe() {
+    document.getElementById("iframeWindow").contentWindow.location.reload();
+}
 
-    // Attach event listener to the Search button
-    document.getElementById("searchButton").addEventListener("click", function() {
-        openIframe();
-    });
+document.getElementById("searchButton").addEventListener("click", function() {
+    openIframe();
+});
+
+
 
 
 
