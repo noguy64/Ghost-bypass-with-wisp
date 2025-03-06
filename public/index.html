@@ -91,9 +91,15 @@
     
     <!-- Fullscreen iframe container (Hidden by default) -->
 <div id="iframe-container" class="iframe-container" style="display: none;">
-    <div class="back-button" onclick="goBackToHome()">Back to Home</div>
+    <div class="iframe-header">
+        <button class="nav-button" onclick="goBack()">←</button>
+        <button class="nav-button" onclick="reloadIframe()">⟳</button>
+        <button class="nav-button" onclick="goForward()">→</button>
+        <button class="back-button" onclick="goBackToHome()">Back to Home</button>
+    </div>
     <iframe id="iframeWindow" class="iframeWindow"></iframe>
 </div>
+
 
     
 </center>
