@@ -50,22 +50,6 @@ buttons.forEach((button) => {
 });
 
 
-
-
-
-    
-
-
-
-
-document.getElementById("urlInput").addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {  // Ensure the key is "Enter"
-        event.preventDefault();  // Prevent default form submission
-        openIframe();  // Call the function to open the iframe
-    }
-});
-
-
 function openIframe() {
     document.getElementById("iframe-container").style.display = "flex";
 }
@@ -93,9 +77,6 @@ function reloadIframe() {
 
 document.getElementById("searchButton").addEventListener("click", function() {
     openIframe();
-    
-
-
 });
 
 
@@ -143,5 +124,3 @@ document.getElementById("switcher").onselect = async function (event) {
             break;
     }
 }
-
-
