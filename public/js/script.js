@@ -137,10 +137,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 const encodedUrl = __uv$config.prefix + __uv$config.encodeUrl(rawUrl); // Encode for the proxy
 
                 // Set the iframe src to the encoded URL
-                document.getElementById("iframeWindow").src = encodedUrl;
+                document.getElementById("iframeWindowGame").src = encodedUrl;
 
                 // Show the iframe container
-                document.getElementById("iframe-container").style.display = "flex";
+                document.getElementById("iframe-container-Game").style.display = "flex";
             });
         });
     } else {
