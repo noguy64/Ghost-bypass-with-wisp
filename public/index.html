@@ -38,7 +38,18 @@
             </ul>
         </nav>
     </header>
-        <div class="game-button" style="margin-left: 470px;">
+    
+    <div id="iframe-container-Game" class="iframe-container" style="display: none;">
+        <div class="iframe-header">
+            <button class="nav-button" onclick="goBack()">←</button>
+            <button class="nav-button" onclick="reloadIframe()">⟳</button>
+            <button class="nav-button" onclick="goForward()">→</button>
+            <button class="back-button" onclick="goBackToHome()">Back to Home</button>
+        </div>
+        <iframe id="iframeWindowGame" class="iframeWindow"></iframe>
+    </div>
+     
+     <div class="game-button" style="margin-left: 470px;">
             <a href="https://crazygames.com">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Crazygames_jpg_logo.jpg" alt="Game Cover" style="height: 200px; width: 200px;">
             </a>
@@ -58,15 +69,7 @@
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb2OLmP1E8Wx8wn7mMvwFIfM1lUaJIQL6RZbQzq2KMokv2NAk8BZg6iHKWs5sB6Vk6lfM&usqp=CAU" alt="Game Cover" style="height: 200px; width: 200px;">
             </a>
             
-            <div id="iframe-container-Game" class="iframe-container-Game" style="display: none;">
-                <div class="iframe-header">
-                    <button class="nav-button" onclick="goBack()">←</button>
-                    <button class="nav-button" onclick="reloadIframe()">⟳</button>
-                    <button class="nav-button" onclick="goForward()">→</button>
-                    <button class="back-button" onclick="goBackToHome()">Back to Home</button>
-                </div>
-                <iframe id="iframeWindowGame" class="iframeWindowGame"></iframe>
-            </div>
+           
         
         
         </div>
