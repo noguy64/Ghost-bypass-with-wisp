@@ -59,6 +59,11 @@ function goBackToHome() {
     document.getElementById("iframeWindow").src = ""; // Clear iframe
 }
 
+function goBackToHome() {
+    document.getElementById("iframe-container-Game").style.display = "none";
+    document.getElementById("iframeWindowGame").src = ""; // Clear iframe
+}
+
 function goBack() {
     const iframe = document.getElementById("iframeWindow").contentWindow;
     if (iframe.history.length > 1) {
