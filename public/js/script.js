@@ -50,38 +50,7 @@ buttons.forEach((button) => {
 });
 
 
-document.addEventListener("DOMContentLoaded", function() {
-    const urlInput = document.getElementById("urlInput");
-    const appLinks = document.querySelectorAll(".game-button a"); // Select all app links
 
-    if (urlInput) {
-        // Handle Enter key for manual input
-        urlInput.addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                openIframe();
-            }
-        });
-    } else {
-        console.error("Error: urlInput not found.");
-    }
-
-    if (appLinks.length > 0) {
-        // Loop through each game button link
-        appLinks.forEach(app => {
-            app.addEventListener("click", function(event) {
-                event.preventDefault(); // Prevent default navigation
-                urlInput.value = this.href; // Set href as input value
-
-                // Simulate pressing "Enter" to launch iframe
-                let enterEvent = new KeyboardEvent("keypress", { key: "Enter" });
-                urlInput.dispatchEvent(enterEvent);
-            });
-        });
-    } else {
-        console.error("Error: No app links found.");
-    }
-});
 
 
     
@@ -174,3 +143,27 @@ document.getElementById("switcher").onselect = async function (event) {
             break;
     }
 }
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const appLinks = document.querySelectorAll(".game-button a"); // Select all app links
+
+    if (appLinks.length > 0) {
+        appLinks.forEach(app => {
+            app.addEventListener("click", function(event) {
+                event.preventDefault(); // Prevent default navigation
+
+                const rawUrl = this.href; // Get the app's href
+                const encodedUrl = __uv$config.prefix + __uv$config.encodeUrl(rawUrl); // Encode for the proxy
+
+                // Set the iframe src to the encoded URL
+                document.getElementById("iframeWindow").src = encodedUrl;
+
+                // Show the iframe container
+                document.getElementById("iframe-container").style.display = "flex";
+            });
+        });
+    } else {
+        console.error("Error: No app links found.");
+    }
+});
