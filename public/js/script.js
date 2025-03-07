@@ -59,7 +59,7 @@ function goBackToHome() {
     document.getElementById("iframeWindow").src = ""; // Clear iframe
 }
 
-function goBackToHome() {
+function goBackToHomeGame() {
     document.getElementById("iframe-container-Game").style.display = "none";
     document.getElementById("iframeWindowGame").src = ""; // Clear iframe
 }
