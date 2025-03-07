@@ -52,7 +52,6 @@ buttons.forEach((button) => {
 
 document.addEventListener("DOMContentLoaded", function() {
     const urlInput = document.getElementById("urlInput");
-    const searchButton = document.getElementById("searchButton");
     const appLinks = document.querySelectorAll(".game-button a"); // Select all app links
 
     if (urlInput) {
@@ -68,13 +67,13 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     if (appLinks.length > 0) {
-        // Add click event to each app link
+        // Loop through each game button link
         appLinks.forEach(app => {
             app.addEventListener("click", function(event) {
-                event.preventDefault(); // Prevent normal navigation
+                event.preventDefault(); // Prevent default navigation
                 urlInput.value = this.href; // Set href as input value
 
-                // Simulate pressing "Enter"
+                // Simulate pressing "Enter" to launch iframe
                 let enterEvent = new KeyboardEvent("keypress", { key: "Enter" });
                 urlInput.dispatchEvent(enterEvent);
             });
@@ -83,6 +82,9 @@ document.addEventListener("DOMContentLoaded", function() {
         console.error("Error: No app links found.");
     }
 });
+
+
+    
 
 
 
