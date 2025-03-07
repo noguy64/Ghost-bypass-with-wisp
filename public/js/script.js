@@ -145,25 +145,3 @@ document.getElementById("switcher").onselect = async function (event) {
 }
 
 
-document.addEventListener("DOMContentLoaded", function() {
-    const appLinks = document.querySelectorAll(".game-button a"); // Select all app links
-
-    if (appLinks.length > 0) {
-        appLinks.forEach(app => {
-            app.addEventListener("click", function(event) {
-                event.preventDefault(); // Prevent default navigation
-
-                const rawUrl = this.href; // Get the app's href
-                const encodedUrl = __uv$config.prefix + __uv$config.encodeUrl(rawUrl); // Encode for the proxy
-
-                // Set the iframe src to the encoded URL
-                document.getElementById("iframeWindow").src = encodedUrl;
-
-                // Show the iframe container
-                document.getElementById("iframe-container").style.display = "flex";
-            });
-        });
-    } else {
-        console.error("Error: No app links found.");
-    }
-});
