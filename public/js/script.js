@@ -114,7 +114,7 @@ document.getElementById("searchButton").onclick = async function (event) {
         }
     }
 	if (!await connection.getTransport()) {
-		await connection.setTransport("/epoxy/index.mjs", [{ wisp: wispUrl }]);
+		await connection.setTransport("/libcurl/index.mjs", [{ wisp: wispUrl }]);
 	}
     iframeWindow.src = __uv$config.prefix + __uv$config.encodeUrl(url);
 };
@@ -127,24 +127,27 @@ document.getElementById("switcher").onselect = async function (event) {
         case "bare":
             await connection.setTransport("/baremod/index.mjs", [bareUrl]);
             break;
+        case "libcurl":
+            await connection.setTransport("/libcurl/index.mjs", [{ wisp: wispUrl }]);
+            break;
     }
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    const appLinks = document.querySelectorAll(".game-button a"); // Select all app links
+    const appLinks = document.querySelectorAll(".game-button a"); 
 
     if (appLinks.length > 0) {
         appLinks.forEach(app => {
             app.addEventListener("click", function(event) {
-                event.preventDefault(); // Prevent default navigation
+                event.preventDefault(); 
 
-                const rawUrl = this.href; // Get the app's href
-                const encodedUrl = __uv$config.prefix + __uv$config.encodeUrl(rawUrl); // Encode for the proxy
+                const rawUrl = this.href; 
+                const encodedUrl = __uv$config.prefix + __uv$config.encodeUrl(rawUrl); 
 
-                // Set the iframe src to the encoded URL
+               
                 document.getElementById("iframeWindowGame").src = encodedUrl;
 
-                // Show the iframe container
+                
                 document.getElementById("iframe-container-Game").style.display = "flex";
             });
         });
