@@ -99,6 +99,12 @@ function goBackToHomeGame() {
     document.getElementById("iframeWindowGame").src = ""; // Clear iframe
 }
 
+function goBackToHomeApps() {
+    document.getElementById("iframe-container-Apps").style.display = "none";
+    document.getElementById("iframeWindowApps").src = ""; // Clear iframe
+}
+
+
 function goBack() {
     const iframe = document.getElementById("iframeWindow").contentWindow;
     if (iframe.history.length > 1) {
@@ -156,6 +162,30 @@ document.getElementById("searchButton").onclick = async function (event) {
 
 
 
+
+document.addEventListener("DOMContentLoaded", function() {
+    const appLinks = document.querySelectorAll(".apps-button a"); 
+
+    if (appLinks.length > 0) {
+        appLinks.forEach(app => {
+            app.addEventListener("click", function(event) {
+                event.preventDefault(); 
+
+                const rawUrl = this.href; 
+                const encodedUrl = __uv$config.prefix + __uv$config.encodeUrl(rawUrl); 
+
+                                  
+                
+                document.getElementById("iframeWindowApps").src = encodedUrl;
+
+                
+                document.getElementById("iframe-container-Apps").style.display = "flex";
+            });
+        });
+    } else {
+        console.error("Error: No app links found.");
+    }
+});
 
 document.addEventListener("DOMContentLoaded", function() {
     const appLinks = document.querySelectorAll(".game-button a"); 
