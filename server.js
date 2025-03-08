@@ -2,6 +2,7 @@ import wisp from "wisp-server-node"
 import { createBareServer } from "@tomphttp/bare-server-node"
 import { uvPath } from "@titaniumnetwork-dev/ultraviolet"
 import { epoxyPath } from "@mercuryworkshop/epoxy-transport"
+import { libcurlPath } from '@mercuryworkshop/libcurl-transport';
 import { bareModulePath } from "@mercuryworkshop/bare-as-module3"
 import { baremuxPath } from "@mercuryworkshop/bare-mux/node"
 import express from "express";
@@ -19,6 +20,7 @@ app.use("/uv/", express.static(uvPath));
 app.use("/epoxy/", express.static(epoxyPath));
 app.use("/baremux/", express.static(baremuxPath));
 app.use("/baremod/", express.static(bareModulePath));
+app.use("/libcurl/", express.static(libcurlPath));
 
 app.use((req, res) => {
     res.status(404);
