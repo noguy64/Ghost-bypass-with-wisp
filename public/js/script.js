@@ -1,3 +1,38 @@
+window.onload = function() {
+    connection.setTransport("/libcurl/index.mjs", [{ wisp: wispUrl }]);
+  };
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    
+    const switcherElement = document.getElementById('switcher');
+  
+    
+    function updateTransport() {
+      const switcherValue = switcherElement.id;  
+      if (switcherValue === "epoxy") {
+        connection.setTransport("/epoxy/index.mjs", [{ wisp: wispUrl }]);
+      } else if (switcherValue === "bare") {
+        connection.setTransport("/baremod/index.mjs", [bareUrl]);
+      } else if (switcherValue === "libcurl") {
+        connection.setTransport("/epoxy/index.mjs", [{ wisp: wispUrl }]);
+      }
+    }
+  
+    updateTransport();
+  
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+
+        if (mutation.type === 'attributes' && mutation.attributeName === 'id') {
+          updateTransport();  // Call the updateTransport function
+        }
+      });
+    });
+  
+    observer.observe(switcherElement, { attributes: true });
+  });
+  
+
 function showScreen(screenId) {
     const screens = document.querySelectorAll('.screen');
     screens.forEach(screen => {
@@ -119,19 +154,8 @@ document.getElementById("searchButton").onclick = async function (event) {
     iframeWindow.src = __uv$config.prefix + __uv$config.encodeUrl(url);
 };
 
-document.getElementById("switcher").onselect = async function (event) {
-    switch (event.target.value) {
-        case "epoxy":
-            await connection.setTransport("/epoxy/index.mjs", [{ wisp: wispUrl }]);
-            break;
-        case "bare":
-            await connection.setTransport("/baremod/index.mjs", [bareUrl]);
-            break;
-        case "libcurl":
-            await connection.setTransport("/libcurl/index.mjs", [{ wisp: wispUrl }]);
-            break;
-    }
-}
+
+
 
 document.addEventListener("DOMContentLoaded", function() {
     const appLinks = document.querySelectorAll(".game-button a"); 
@@ -144,7 +168,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 const rawUrl = this.href; 
                 const encodedUrl = __uv$config.prefix + __uv$config.encodeUrl(rawUrl); 
 
-               
+                                  
+                
                 document.getElementById("iframeWindowGame").src = encodedUrl;
 
                 
