@@ -24,7 +24,7 @@ window.onload = function() {
       mutations.forEach(function(mutation) {
 
         if (mutation.type === 'attributes' && mutation.attributeName === 'id') {
-          updateTransport();  // Call the updateTransport function
+          updateTransport();  
         }
       });
     });
@@ -42,7 +42,7 @@ function showScreen(screenId) {
             screen.classList.remove('active');
         }
     });
-    // Smooth scroll to top
+    
     window.scrollTo({
         top: 0,
         behavior: 'smooth'
@@ -68,18 +68,18 @@ const configurations = [
 // Get all the buttons
 const buttons = document.querySelectorAll('.game-button');
 
-// Add an event listener to each button
+
 buttons.forEach((button) => {
     button.addEventListener('mouseover', () => {
-        // Randomly choose a configuration
+        
         const config = configurations[Math.floor(Math.random() * configurations.length)];
 
-        // Set the scale and rotation
+        
         button.style.transform = `scale(${config.scale}) rotate(${config.rotation}deg)`;
     });
 
     button.addEventListener('mouseout', () => {
-        // Reset the scale and rotation
+        
         button.style.transform = 'scale(1) rotate(0deg)';
     });
 });
@@ -144,13 +144,13 @@ document // makes it so you can press enter to submit as opposed to just being a
 document.getElementById("searchButton").onclick = async function (event) {
     event.preventDefault();
 
-    let url = document.getElementById("urlInput").value; // if no periods are detected in the input, search google instead
+    let url = document.getElementById("urlInput").value; 
     let searchUrl = "https://www.bing.com/search?q=";
 
     if (!url.includes(".")) {
         url = searchUrl + encodeURIComponent(url);
     } else {
-        if (!url.startsWith("http://") && !url.startsWith("https://")) { // if no http or https is detected, add https automatically
+        if (!url.startsWith("http://") && !url.startsWith("https://")) { 
             url = "https://" + url;
         }
     }
